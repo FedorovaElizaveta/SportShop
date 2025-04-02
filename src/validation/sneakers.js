@@ -7,5 +7,5 @@ export const createSneakerSchema = Joi.object({
   size: Joi.array().items(Joi.number()).required().example([5, 7, 8]),
   color: Joi.string().required().example('Pink'),
   inStock: Joi.boolean().required().example(true),
-  imageUrl: Joi.string().uri().required(),
+  imageUrl: Joi.string().uri(),
 });

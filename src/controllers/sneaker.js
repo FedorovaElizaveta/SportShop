@@ -1,5 +1,5 @@
 import createHttpError from 'http-errors';
-import { getSneakers } from '../services/sneaker.js';
+import { createSneakers, getSneakers } from '../services/sneaker.js';
 
 export const getSneakersController = async (req, res, next) => {
   const sneaker = await getSneakers();
@@ -17,7 +17,20 @@ export const getSneakersController = async (req, res, next) => {
 };
 
 export const createSneakersController = async (req, res) => {
-  console.log(req);
+  const { brand, model, price, size, color, inStock } = req.body;
 
-  res.status(201).json({ message: 'Hello!' });
+  const sneakers = await createSneakers({
+    brand,
+    model,
+    price,
+    size,
+    color,
+    inStock,
+  });
+
+  res.status(201).json({
+    status: 201,
+    message: 'Successfully created a pair of sneakers!',
+    data: sneakers,
+  });
 };

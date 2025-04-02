@@ -8,7 +8,7 @@ const sneakerSchema = new Schema(
     size: { type: [Number], required: true },
     color: { type: String, required: true },
     inStock: { type: Boolean, required: true },
-    imageUrl: { type: String, required: true },
+    imageUrl: { type: String, required: false },
   },
   {
     timestamps: false,

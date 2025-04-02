@@ -7,3 +7,9 @@ export const getSneakers = async () => {
 
   return sneakers;
 };
+
+export const createSneakers = async (sneakers) => {
+  const newSneakers = await SneakerCollection.create(sneakers);
+
+  return newSneakers;
+};
