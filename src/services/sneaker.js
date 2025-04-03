@@ -8,8 +8,34 @@ export const getSneakers = async () => {
   return sneakers;
 };
 
-export const createSneakers = async (sneakers) => {
-  const newSneakers = await SneakerCollection.create(sneakers);
+export const getSneakersById = async (id) => {
+  const sneakers = await SneakerCollection.findById({ _id: id });
 
-  return newSneakers;
+  if (!sneakers) return null;
+
+  return sneakers;
+};
+
+export const createSneakers = async (sneakers) => {
+  return await SneakerCollection.create(sneakers);
+};
+
+export const patchSneakers = async (id, payload, options = {}) => {
+  const patchedSneakers = await SneakerCollection.findOneAndUpdate(
+    { _id: id },
+    payload,
+    { new: true, ...options },
+  );
+
+  if (!patchedSneakers) return null;
+
+  return patchedSneakers;
+};
+
+export const deleteSneakers = async (id) => {
+  const result = await SneakerCollection.findByIdAndDelete({ _id: id });
+
+  if (!result) return null;
+
+  return result;
 };
