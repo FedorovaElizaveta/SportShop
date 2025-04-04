@@ -13,9 +13,12 @@ import {
   deleteSneakersController,
 } from '../controllers/sneaker.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { auth } from '../middlewares/auth.js';
 
 const router = Router();
 const jsonParser = json();
+
+router.use(auth);
 
 router.get('/', ctrlWrapper(getSneakersController));
 

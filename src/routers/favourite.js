@@ -8,9 +8,12 @@ import {
   deleteFavouriteSneakersController,
   getFavouriteSneakersController,
 } from '../controllers/favourite.js';
+import { auth } from '../middlewares/auth.js';
 
 const router = Router();
 const jsonParser = json();
+
+router.use(auth);
 
 router.get('/', ctrlWrapper(getFavouriteSneakersController));
 
